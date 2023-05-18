@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "394262668861",
+    "project_id": "eliteestateelite",
+    "storage_bucket": "eliteestateelite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394262668861:android:7b56d60e41124d362f6c54",
+        "android_client_info": {
+          "package_name": "com.elite.realestate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394262668861-rsp7mb45k2k5ha4jrfqv5ilb5etrhhv1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekPve1LMCtgi2fJg7wKls4hPUEXSK0Io"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "394262668861-rsp7mb45k2k5ha4jrfqv5ilb5etrhhv1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

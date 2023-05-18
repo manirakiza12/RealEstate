@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/fabBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/fav_icon_bg"
+        android:contentDescription="Elite estates"
+        android:paddingTop="18dp"
+        android:paddingEnd="18dp"
+        android:paddingStart="13dp"
+        android:paddingBottom="18dp"
+        android:src="@drawable/ic_back" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_toEndOf="@+id/fabBack"
+        android:layout_toStartOf="@+id/ibFilter"
+        android:fontFamily="@font/urbanistbold"
+        android:includeFontPadding="false"
+        android:text="EliteEstate"
+        android:textColor="@color/blue"
+        android:textSize="20sp" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ibFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_filter"
+        app:backgroundTint="@color/white_bg"
+        app:elevation="1dp"
+        app:fabCustomSize="48dp"
+        app:srcCompat="@drawable/ic_filter"
+        app:tint="@color/app_purple_bg" />
+
+</RelativeLayout>

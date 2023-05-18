@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+     <RelativeLayout
+        android:id="@+id/rlMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:theme="@style/ProgressBar" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsSV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="70dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line" />
+
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistblack"
+                    android:singleLine="true"
+                    android:text="@string/advance_search_title"
+                    android:textColor="@color/title"
+                    android:textSize="20sp"
+                    tools:text="@string/advance_search_title" />
+
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <TextView
+                    android:id="@+id/tvReco"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistextrabold"
+                    android:singleLine="true"
+                    android:text="@string/recommended_filter"
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/rgVery"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbNonVery"
+                            android:layout_width="190dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/checkbox_selector"
+                            android:button="@null"
+                            android:fontFamily="@font/urbanistextrabold"
+                            android:gravity="center"
+                            android:text="@string/non_verified_properties"
+                            android:textColor="@color/radio_button_select"
+                            android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbVery"
+                                android:layout_width="170dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:layout_marginStart="12dp"
+                                android:text="@string/verified_properties"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+                        </RadioGroup>
+                        </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <View
+                    android:id="@+id/line3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp">
+
+                    <TextView
+                        android:id="@+id/tvRange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="start"
+                        android:layout_toStartOf="@+id/mcRange"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/urbanistextrabold"
+                        android:singleLine="true"
+                        android:text="@string/price_range"
+                        android:textColor="@color/title"
+                        android:textSize="16sp" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcRange"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        app:cardBackgroundColor="@color/card_normal_bg"
+                        app:cardCornerRadius="4dp"
+                        app:cardElevation="0dp"
+                        app:rippleColor="@android:color/transparent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="8dp"
+                            android:paddingTop="3dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="3dp">
+
+                            <TextView
+                                android:id="@+id/tvRangeMin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="15k"
+                                android:textColor="@color/card_normal_text"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tvRangeLine"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:layout_marginStart="3dp"
+                                android:layout_marginEnd="3dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="@string/price_range_line"
+                                android:textColor="@color/card_normal_text"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:id="@+id/tvRangeMax"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text="20k"
+                                android:textColor="@color/card_normal_text"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </RelativeLayout>
+
+                <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                    android:id="@+id/crSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    app:bar_color="@color/seek_bar_default"
+                    app:bar_highlight_color="@color/seek_bar_check"
+                    app:corner_radius="5"
+                    app:data_type="_integer"
+                    app:gap="10000"
+                    app:left_thumb_color="@color/seek_bar_check"
+                    app:left_thumb_color_pressed="@color/seek_bar_check"
+                    app:right_thumb_color="@color/seek_bar_check"
+                    app:right_thumb_color_pressed="@color/seek_bar_check" />
+
+                <View
+                    android:id="@+id/line4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <TextView
+                    android:id="@+id/tvBedRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistextrabold"
+                    android:singleLine="true"
+                    android:text="@string/bedrooms"
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/rgBed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbBed1"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bedrooms_1"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbBed2"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bedrooms_2"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbBed3"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bedrooms_3"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbBed4"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bedrooms_4"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <View
+                    android:id="@+id/line5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <TextView
+                    android:id="@+id/tvBath"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistextrabold"
+                    android:singleLine="true"
+                    android:text="@string/bath"
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/rgBath"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbBathAny"
+                                android:layout_width="55dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bath_any"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbBath1"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bath_1"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbBath2"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bath_2"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbBath3"
+                                android:layout_width="50dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/bath_3"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <View
+                    android:id="@+id/line6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <TextView
+                    android:id="@+id/tvFurTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistextrabold"
+                    android:singleLine="true"
+                    android:text="@string/furnishing"
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioGroup
+                            android:id="@+id/rgFur"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/rbFurn"
+                                android:layout_width="90dp"
+                                android:layout_height="35dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/furnishing"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbSemi"
+                                android:layout_width="130dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/furnishing_semi"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+
+                            <RadioButton
+                                android:id="@+id/rbUnSemi"
+                                android:layout_width="120dp"
+                                android:layout_height="35dp"
+                                android:layout_marginStart="12dp"
+                                android:background="@drawable/checkbox_selector"
+                                android:button="@null"
+                                android:fontFamily="@font/urbanistextrabold"
+                                android:gravity="center"
+                                android:text="@string/furnishing_un"
+                                android:textColor="@color/radio_button_select"
+                                android:textSize="14sp" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <View
+                    android:id="@+id/line7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <TextView
+                    android:id="@+id/tvType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistextrabold"
+                    android:singleLine="true"
+                    android:text="@string/type_title"
+                    android:textColor="@color/title"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAllType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="9dp"
+                    android:clipToPadding="false" />
+
+                <View
+                    android:id="@+id/line8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/bottom_sheet_line2" />
+
+                <LinearLayout
+                    android:id="@+id/llBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:weightSum="2">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/mbClear"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/urbanistbold"
+                        android:includeFontPadding="false"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="@string/filter_clear"
+                        android:textAllCaps="false"
+                        android:textColor="@color/card_normal_text"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/white_bg"
+                        app:cornerRadius="20dp"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        app:strokeColor="@color/card_select_bg"
+                        app:strokeWidth="2dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/mbApply"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/urbanistbold"
+                        android:includeFontPadding="false"
+                        android:paddingTop="10dp"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:paddingBottom="10dp"
+                        android:text="@string/filter_apply"
+                        android:textAllCaps="false"
+                        android:textColor="@color/card_select_text"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/card_select_bg"
+                        app:cornerRadius="20dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

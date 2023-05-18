@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/plan_card_bg_unselect"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="18dp">
+
+            <View
+                android:id="@+id/rdCheck"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/plan_circle_unselect" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_toStartOf="@+id/lytAmount"
+                android:layout_toEndOf="@+id/rdCheck"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvPlanName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistextrabold"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:textColor="@color/plan_title"
+                    android:textSize="18sp"
+                    tools:text="@string/app_name" />
+
+                <TextView
+                    android:id="@+id/tvNoApplied"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/plan_limit_bg"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistbold"
+                    android:includeFontPadding="false"
+                    android:paddingStart="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="2dp"
+                    android:singleLine="true"
+                    android:text="10 Property Apply"
+                    android:textColor="@color/plan_apply_unselect"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lytAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/urbanistextrabold"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:textColor="@color/plan_price_unselect"
+                        android:textSize="22sp"
+                        tools:text="149.00/" />
+
+                    <TextView
+                        android:id="@+id/tvCurrency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/urbanistextrabold"
+                        android:includeFontPadding="false"
+                        android:singleLine="true"
+                        android:textColor="@color/plan_price_unselect"
+                        android:textSize="14sp"
+                        tools:text="INR" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvPlanTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/urbanistbold"
+                    android:includeFontPadding="false"
+                    android:singleLine="true"
+                    android:textColor="@color/plan_days_unselect"
+                    android:textSize="12sp"
+                    tools:text="For 3 Month(s)" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

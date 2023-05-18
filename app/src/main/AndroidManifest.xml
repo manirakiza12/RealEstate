@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.realestate">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+    <application
+        android:name="com.elite.util.MyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/app_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_icon_round"
+        android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.RealEstate"
+        tools:replace="android:usesCleartextTraffic,android:theme"
+        tools:ignore="UnusedAttribute">
+        <activity
+            android:name="com.elite.realestate.ActivitySplash"
+            android:theme="@style/RemoveAppSplashTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.elite.realestate.IntroActivity"/>
+        <activity android:name="com.elite.realestate.MainActivity"/>
+        <activity android:name="com.elite.realestate.LoginActivity"/>
+        <activity android:name="com.elite.realestate.RegisterActivity"/>
+        <activity android:name="com.elite.realestate.ForgotPassActivity"/>
+        <activity android:name="com.elite.realestate.AdvanceSearchActivity"/>
+        <activity android:name="com.elite.realestate.CategoryListActivity"/>
+        <activity android:name="com.elite.realestate.DetailActivity"/>
+        <activity android:name="com.elite.realestate.GalleryActivity"/>
+        <activity android:name="com.elite.realestate.FullGalleryActivity"/>
+        <activity android:name="com.elite.realestate.RecentActivity"/>
+        <activity android:name="com.elite.realestate.FavoriteActivity"/>
+        <activity android:name="com.elite.realestate.PagesActivity"/>
+        <activity android:name="com.elite.realestate.EditProfileActivity"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.elite.realestate.UploadActivity"/>
+        <activity android:name="com.elite.realestate.AboutUsActivity"/>
+        <activity android:name="com.elite.realestate.MySubscriptionActivity"/>
+        <activity android:name="com.elite.realestate.PlanActivity"/>
+        <activity android:name="com.elite.realestate.SuccessActivity"/>
+        <activity android:name="com.elite.realestate.PaymentMethodActivity"/>
+        <activity android:name="com.elite.realestate.RelatedPropertyActivity"/>
+        <activity android:name="com.elite.realestate.GalleryDetailActivity"/>
+        <activity android:name="com.elite.paymentmethod.PayPalActivity"/>
+        <activity android:name="com.elite.paymentmethod.PayStackActivity"/>
+        <activity android:name="com.elite.paymentmethod.PayUMoneyActivity"/>
+        <activity android:name="com.elite.paymentmethod.RazorPayActivity"/>
+        <activity android:name="com.elite.paymentmethod.StripeActivity"/>
+
+        <meta-data
+            android:name="applovin.sdk.key"
+            android:value="@string/applovin_sdk_key" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <meta-data
+            android:name="com.wortise.ads.utm"
+            android:value="viaviweb" />
+        <meta-data
+            android:name="firebase_crash_collection_enabled"
+            android:value="false" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/app_name" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+        <meta-data
+            android:name="com.onesignal.NotificationAccentColor.DEFAULT"
+            android:value="FF7F56D9" />
+
+        <activity
+            android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="rzp.device_token.share" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@style/CheckoutTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <data
+                    android:host="rzp.io"
+                    android:scheme="io.rzp" />
+            </intent-filter>
+        </activity>
+    </application>
+    <queries>
+        <package android:name="com.facebook.katana" />
+    </queries>
+</manifest>

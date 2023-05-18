@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+            <ImageView
+                android:id="@+id/ivIntro"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/img_intro_1"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_intro_1" />
+
+            <TextView
+                android:id="@+id/tvBooksTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/urbanistextrabold"
+                android:gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="@string/intro_title_1"
+                android:textColor="@color/intro_title"
+                android:textSize="25sp"
+                tools:text="@string/intro_title_1" />
+
+            <TextView
+                android:id="@+id/tvBookDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBooksTitle"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/urbanistbold"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="5dp"
+                android:text="@string/intro_desc_1"
+                android:textColor="@color/intro_desc"
+                android:textSize="18sp"
+                tools:text="@string/intro_desc_1" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

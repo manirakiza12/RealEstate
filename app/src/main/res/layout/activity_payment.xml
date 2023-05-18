@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg">
+
+    <include layout="@layout/layout_top_pattern" />
+
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/toolbar_one" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:fontFamily="@font/urbanistbold"
+        android:includeFontPadding="false"
+        android:paddingLeft="25dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingRight="25dp"
+        android:text="@string/pay"
+        android:textAllCaps="false"
+        android:textColor="@color/white2"
+        android:textSize="20sp"
+        app:backgroundTint="@color/app_purple_bg"
+        app:cornerRadius="25dp" />
+
+</RelativeLayout>

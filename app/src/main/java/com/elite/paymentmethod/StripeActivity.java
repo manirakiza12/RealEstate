@@ -1,0 +1,202 @@
+package com.elite.paymentmethod;
+
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.activity.ComponentActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.elite.response.StripeCheckOutRP;
+import com.elite.rest.ApiClient;
+import com.elite.rest.ApiInterface;
+import com.elite.util.API;
+import com.elite.util.Method;
+import com.elite.util.StatusBar;
+import com.example.realestate.R;
+import com.example.realestate.databinding.ActivityPaymentBinding;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.stripe.android.PaymentConfiguration;
+import com.stripe.android.paymentsheet.PaymentSheet;
+import com.stripe.android.paymentsheet.PaymentSheetResult;
+import com.stripe.android.paymentsheet.PaymentSheetResultCallback;
+
+import org.jetbrains.annotations.NotNull;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
+public class StripeActivity extends AppCompatActivity {
+
+    String planId, planPrice, planCurrency, planGateway, stripePublisherKey;
+    ProgressDialog pDialog;
+    private String paymentToken = "";
+    private PaymentSheet paymentSheet;
+    private String customerId;
+    private String ephemeralKeySecret;
+    private String paymentId;
+    Method method;
+    ActivityPaymentBinding stripePaymentBinding;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        StatusBar.initLatestScreen(StripeActivity.this);
+        stripePaymentBinding = ActivityPaymentBinding.inflate(getLayoutInflater());
+        setContentView(stripePaymentBinding.getRoot());
+        method = new Method(StripeActivity.this);
+
+        stripePaymentBinding.toolbarMain.tvName.setText(getString(R.string.payment_stripe));
+        stripePaymentBinding.toolbarMain.fabBack.setOnClickListener(v -> onBackPressed());
+
+        pDialog = new ProgressDialog(this,R.style.MyAlertDialogStyle);
+
+        Intent intent = getIntent();
+        planId = intent.getStringExtra("planId");
+        planPrice = intent.getStringExtra("planPrice");
+        planCurrency = intent.getStringExtra("planCurrency");
+        planGateway = intent.getStringExtra("planGateway");
+        stripePublisherKey = intent.getStringExtra("stripePublisherKey");
+
+        PaymentConfiguration.init(this, stripePublisherKey);
+        paymentSheet = new PaymentSheet((ComponentActivity) StripeActivity.this, new PaymentSheetResultCallback() {
+            @Override
+            public void onPaymentSheetResult(@NotNull PaymentSheetResult paymentSheetResult) {
+                onPaymentSheetResult1(paymentSheetResult);
+            }
+        });
+
+
+        stripePaymentBinding.btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (method.isNetworkAvailable()) {
+                    getToken();
+                } else {
+                    Toast.makeText(StripeActivity.this, getString(R.string.no_internet_msg), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+
+    private void presentPaymentSheet() {
+        paymentSheet.presentWithPaymentIntent(
+                paymentToken,
+                new PaymentSheet.Configuration(
+                        getString(R.string.app_name),
+                        new PaymentSheet.CustomerConfiguration(
+                                customerId,
+                                ephemeralKeySecret
+                        )
+                )
+        );
+
+    }
+
+    private void onPaymentSheetResult1(final PaymentSheetResult paymentSheetResult) {
+        if (paymentSheetResult instanceof PaymentSheetResult.Canceled) {
+            showError(getString(R.string.paypal_payment_error_2));
+        } else if (paymentSheetResult instanceof PaymentSheetResult.Failed) {
+            showError(getString(R.string.paypal_payment_error_1));
+        } else if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
+            if (method.isNetworkAvailable()) {
+                new Transaction(StripeActivity.this)
+                        .purchasedItem(planId, method.getUserId(), paymentId, planGateway);
+            } else {
+                showError(StripeActivity.this.getString(R.string.no_internet_msg));
+            }
+        }
+    }
+
+    private void showError(String Title) {
+        new AlertDialog.Builder(StripeActivity.this)
+                .setTitle(getString(R.string.stripe_payment_error_1))
+                .setMessage(Title)
+                .setIcon(R.mipmap.app_icon)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .show();
+    }
+
+    private void getToken() {
+        pDialog.show();
+        pDialog.setMessage(getResources().getString(R.string.loading));
+        pDialog.setCancelable(false);
+
+        JsonObject jsObj = (JsonObject) new Gson().toJsonTree(new API(StripeActivity.this));
+        jsObj.addProperty("amount", planPrice);
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<StripeCheckOutRP> call = apiService.getStripeTokenData(API.toBase64(jsObj.toString()));
+        call.enqueue(new Callback<StripeCheckOutRP>() {
+            @Override
+            public void onResponse(@NotNull Call<StripeCheckOutRP> call, @NotNull Response<StripeCheckOutRP> response) {
+                try {
+                    StripeCheckOutRP paymentCheckOutRP = response.body();
+
+                     if (paymentCheckOutRP !=null && paymentCheckOutRP.getSuccess().equals("1")) {
+                        StripeCheckOutRP.ItemPaymentCheckOut itemPaymentCheckOut = paymentCheckOutRP.getItemPaymentCheckOuts();
+                        if (method.isNetworkAvailable()) {
+                            paymentToken = itemPaymentCheckOut.getStripe_payment_token();
+                            ephemeralKeySecret = itemPaymentCheckOut.getStripe_ephemeralKey();
+                            customerId = itemPaymentCheckOut.getStripe_customer();
+                            paymentId = itemPaymentCheckOut.getStripe_id();
+                            if (paymentToken.isEmpty() && ephemeralKeySecret.isEmpty() && customerId.isEmpty() && paymentId.isEmpty()) {
+                                showError(getString(R.string.stripe_token_error));
+                            } else {
+                                presentPaymentSheet();
+                            }
+                        } else {
+                            showError(getString(R.string.no_internet_msg));
+                        }
+                    } else {
+                         showError(paymentCheckOutRP.getMsg());
+                     }
+
+                } catch (Exception e) {
+                    Log.d("exception_error", e.toString());
+                    method.alertBox(getResources().getString(R.string.stripe_token_error));
+                }
+
+                pDialog.dismiss();
+
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<StripeCheckOutRP> call, @NotNull Throwable t) {
+                // Log error here since request failed
+                Log.e("fail", t.toString());
+                pDialog.dismiss();
+                method.alertBox(getResources().getString(R.string.stripe_token_error));
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+}

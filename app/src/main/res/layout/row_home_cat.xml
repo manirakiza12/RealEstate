@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcHomeCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        app:cardBackgroundColor="@color/white_bg"
+        app:cardElevation="3dp"
+        app:rippleColor="@color/card_view_ripple"
+        app:shapeAppearanceOverlay="@style/CircleImageViewHomeCat">
+
+        <RelativeLayout
+            android:id="@+id/rlHomeCat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+
+            <RelativeLayout
+                android:id="@+id/llIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/cat_home_icon_bg"
+                android:orientation="vertical">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivHomeCat"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/app_name"
+                    android:padding="1dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/home_cat_placeholder"
+                    app:shapeAppearanceOverlay="@style/CircleImageViewHomeCat" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvHomeCatTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toEndOf="@+id/llIV"
+                android:fontFamily="@font/urbanistbold"
+                android:includeFontPadding="false"
+                android:text="@string/app_name"
+                android:textColor="@color/title"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

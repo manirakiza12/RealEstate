@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|start"
+    android:layout_marginBottom="0dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_amenities_icon" />
+
+    <TextView
+        android:id="@+id/tvAmenities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:singleLine="true"
+        android:text="@string/app_name"
+        android:textColor="@color/subTitle_80"
+        android:fontFamily="@font/urbanistbold"
+        android:textSize="14sp" />
+
+</LinearLayout>
